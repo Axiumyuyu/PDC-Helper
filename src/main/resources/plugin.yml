@@ -1,0 +1,9 @@
+name: PDCHelper
+version: '1.0.0'
+main: me.axiumyu.PDCHelper
+api-version: '1.21'
+libraries:
+  - 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0'
+commands:
+  pdc:
+    usage: /pdc <holderType> [target] <get/remove/set> <nameSpaceKey> [type] [value]
