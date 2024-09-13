@@ -17,12 +17,16 @@ import org.bukkit.entity.Player
 import java.util.UUID.fromString
 
 class MainCommand : CommandExecutor {
-    /*            0          1          2
-     * /pdc <holderType> [target] | <get/remove/set> <nameSpaceKey> [type] [value]
+    /*
+     * 命令格式： <>必选   []可选
+     *            0          1          2
+     * /pdc <holderType> [target] <get/remove/set> <nameSpaceKey> [type] [value]
      *
      *          0                 1              2           3
-     * /pdc <holderType> | <get/remove/set> <nameSpaceKey> [type] [value]
+     * /pdc <holderType> <get/remove/set> []nameSpaceKey] [type] [value]
      */
+
+    //命令主入口
     override fun onCommand(
         p0: CommandSender,
         p1: Command,
@@ -35,6 +39,8 @@ class MainCommand : CommandExecutor {
         }
         val params = p3?.slice(1 until p3.size) ?: return false
         when (p3[0]) {
+            //每个分支由不同的类处理，
+            //将参数表去除第一个后传递给下一个函数，确保第一个参数始终为子命令(subCommand)
             "player" -> {
                 if (subCommand.contains(p3[1])) {
                     //                 0               1
@@ -85,6 +91,11 @@ class MainCommand : CommandExecutor {
                 }
             }
 
+            /*
+             *chunk,tile 可以在控制台命令行获取，因此做了检测
+             * 下文的 getChunk(p0, params)/getBlock(p0, params)
+             * （要不还是删掉这个功能吧）
+             */
             "chunk" -> {
                 val chunk by lazy {
                     try {

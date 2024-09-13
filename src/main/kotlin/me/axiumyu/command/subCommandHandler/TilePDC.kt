@@ -7,7 +7,7 @@ import org.bukkit.block.TileState
 import org.bukkit.command.CommandSender
 
 /*
-* /pdc tile [target] <get/remove/set/list/clear> <nameSpaceKey> [type] [value]
+* /pdc tile [target] [get/remove/set/list/clear] <nameSpaceKey> [type] [value]
 *  index: <get/remove/set/list/clear>
 *  index+1:<nameSpaceKey>
 *  index+2:<type>

@@ -10,6 +10,7 @@ class PDCHelper : JavaPlugin() {
     }
 
     override fun onEnable() {
+        //不知道为什么直接用Bukkit的getPlayer()等方法似乎无法正确获得对应的玩家，世界等等
         Companion.server = this.server
         getCommand("pdc")?.setExecutor(MainCommand())
     }
